@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+</head>
+<body>
+    witaj świecie
+
+    <div class="info"></div>
+    <pre></pre>
+    <script>
+        const IDS = Math.floor(Math.random()*999999999999999)+":"+(new Date()).getTime();
+        
+        const socket = io('wss:///');
+        socket.on('connect', ()=>{
+            console.log('Jestem połączony');
+        })
+        socket.on('polecenieinne', dane=>{
+            console.log(dane);
+            
+            document.querySelector('.info').innerHTML = `${dane}`
+        })
+
+        fetch('/netstat')
+            .then(e=>e.text())
+            .then(e=>{
+                document.querySelector('pre').innerText = e;
+            })
+    </script>
+</body>
+</html>
