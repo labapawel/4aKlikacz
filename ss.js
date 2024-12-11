@@ -1,9 +1,9 @@
 const port = 4001;
-const express = require('express');
-const https = require('https')
-const cors = require('cors');
+const express = require('express'); // zainstaluj
+const https = require('https');// zainstaluj
+const cors = require('cors');// zainstaluj
 const fs = require('fs');
-const {Server} = require('socket.io');
+const {Server} = require('socket.io');// zainstaluj
 const {exec} = require('child_process');
 
 let sslConfig = {
