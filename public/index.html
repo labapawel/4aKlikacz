@@ -13,22 +13,29 @@
     <pre></pre>
     <script>
         const IDS = Math.floor(Math.random()*999999999999999)+":"+(new Date()).getTime();
-        
-        const socket = io('wss:///');
+
+        const socket = io('wss://10.4.0.54:4001/');
         socket.on('connect', ()=>{
             console.log('Jestem połączony');
+            socket.emit('klucz', IDS);
         })
-        socket.on('polecenieinne', dane=>{
+
+        socket.on('klients', dane=>{
             console.log(dane);
-            
             document.querySelector('.info').innerHTML = `${dane}`
         })
 
-        fetch('/netstat')
-            .then(e=>e.text())
-            .then(e=>{
-                document.querySelector('pre').innerText = e;
-            })
+        // socket.on('polecenieinne', dane=>{
+        //     console.log(dane);
+            
+        //     document.querySelector('.info').innerHTML = `${dane}`
+        // })
+
+        // fetch('/netstat')
+        //     .then(e=>e.text())
+        //     .then(e=>{
+        //         document.querySelector('pre').innerText = e;
+        //     })
     </script>
 </body>
 </html>
