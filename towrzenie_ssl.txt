@@ -1,0 +1,3 @@
+openssl genrsa -out ss.key 2048
+openssl req -new -key ss.key -out ss.scr
+openssl x509 -req -in ss.scr -signkey ss.key -out ss.crt -days 3650
